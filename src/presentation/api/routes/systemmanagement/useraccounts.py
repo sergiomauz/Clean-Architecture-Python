@@ -18,9 +18,9 @@ def read_user_account(guid):
 
 
 @user_accounts.route("/", methods=["GET"])
-def search_user_accounts():
+def search_user_accounts(search):
     """ ToDo: DocString """
-    return "search_user_accounts"
+    return f"search_user_accounts {search}"
 
 
 @user_accounts.route("/<guid>", methods=["PUT"])

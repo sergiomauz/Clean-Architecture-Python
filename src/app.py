@@ -4,17 +4,8 @@
 import sys
 from flask import Flask
 
-from dependency_injector.wiring import inject, Provide
-
 from infrastructure.persistence.PersistenceContainer import PersistenceContainer
-
 from presentation.api.routes.start import start_routes
-
-@inject
-def imprimir(people_service = Provide[PersistenceContainer.people_service]) -> None:
-    suma = people_service.sum()
-    print(people_service)
-
 
 app = Flask(__name__)
 
@@ -22,10 +13,7 @@ app = Flask(__name__)
 start_routes(app)
 
 if __name__ == '__main__':
-    persistence_container = PersistenceContainer()    
+    persistence_container = PersistenceContainer()
     persistence_container.wire(modules = [sys.modules[__name__]])
-    
 
-    imprimir()
-    
     app.run(debug = True)

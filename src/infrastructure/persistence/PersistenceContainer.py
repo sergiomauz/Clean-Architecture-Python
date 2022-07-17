@@ -6,11 +6,16 @@
 """
 
 from dependency_injector import containers, providers
+from settings import SettingsService
 from .postgresql.main.services.systemmanagement.PeopleService import PeopleService
 
 class PersistenceContainer(containers.DeclarativeContainer):
     """ ToDo: DocString """
+    settings_service = providers.Singleton(
+        SettingsService
+    )
 
     people_service = providers.Singleton(
-        PeopleService
+        PeopleService,
+        settings_service
     )

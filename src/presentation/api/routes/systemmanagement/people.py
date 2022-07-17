@@ -1,9 +1,13 @@
 """
     ToDo: DocString
 """
-from flask import Blueprint
+from flask import Blueprint, jsonify, json
+from mediatr import Mediator
+
+from core.application.main.systemmanagement.people.commands.createperson.CreatePersonCommand import CreatePersonCommand
 
 people = Blueprint("people", __name__)
+mediator = Mediator()
 
 @people.route("/", methods=["POST"])
 def create_person():
@@ -20,7 +24,12 @@ def read_person(guid):
 @people.route("/", methods=["GET"])
 def search_people():
     """ ToDo: DocString """
-    return "search_people"
+    request = CreatePersonCommand()
+    request.name = "Sergio"
+    request.last_name = "Zambrano"
+    # result = mediator.send(request)
+
+    return json.dumps(request)
 
 
 @people.route("/<guid>", methods=["PUT"])
