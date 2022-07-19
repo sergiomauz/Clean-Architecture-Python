@@ -2,7 +2,7 @@
     ToDo: DocString
 """
 
-from system_management import (
+from .system_management import (
     people, user_account_groups, user_accounts)
 
 API_V1 = "/api/v1"

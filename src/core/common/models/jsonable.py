@@ -9,13 +9,9 @@
 
 import json
 
-class CreatePersonVm:
+class Jsonable:
     def __init__(self):
-        self.id = None
-        self.name = None
-        self.last_name = None
-        self.created_at = None
-        self.modified_at = None
+        pass
 
     @property
     def json(self):
