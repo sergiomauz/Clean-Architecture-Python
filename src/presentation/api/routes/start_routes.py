@@ -1,9 +1,9 @@
 """
     ToDo: DocString
 """
-from .systemmanagement.people import people
-from .systemmanagement.useraccountgroups import user_account_groups
-from .systemmanagement.useraccounts import user_accounts
+
+from system_management import (
+    people, user_account_groups, user_accounts)
 
 API_V1 = "/api/v1"
 module_system = f"{API_V1}/system"

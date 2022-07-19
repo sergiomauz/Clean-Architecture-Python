@@ -6,8 +6,9 @@
 """
 
 from dependency_injector import containers, providers
+from infrastructure.persistence.postgresql.main.services.system_management.people import PeopleService
 from settings import SettingsService
-from .postgresql.main.services.systemmanagement.PeopleService import PeopleService
+
 
 class PersistenceContainer(containers.DeclarativeContainer):
     """ ToDo: DocString """

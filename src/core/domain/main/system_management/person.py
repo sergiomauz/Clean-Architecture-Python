@@ -7,17 +7,18 @@
     ToDo: DocString
 """
 
-from BasicEntity import BasicEntity
+from named_entity import NamedEntity
 
-class NamedEntity(BasicEntity):
+class Person(NamedEntity):
     def __init__(self):
         super().__init__()
-        self.name = None
+        self.last_name = None
 
     @property
-    def name(self):
-        return self.name
+    def last_name(self):
+        return self.last_name
 
-    @name.setter
-    def name(self, new_value):
-        self.name = new_value
+    @last_name.setter
+    def last_name(self, new_value):
+        self.last_name = new_value
+    

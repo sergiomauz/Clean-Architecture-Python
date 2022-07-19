@@ -1,6 +1,7 @@
 """
     ToDo: DocString
 """
+
 from flask import Blueprint
 
 user_account_groups = Blueprint("userAccountGroups", __name__)

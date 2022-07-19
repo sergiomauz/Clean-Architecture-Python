@@ -1,11 +1,11 @@
 """
     ToDo: DocString
 """
+
 import sys
 from flask import Flask
-
-from infrastructure.persistence.PersistenceContainer import PersistenceContainer
-from presentation.api.routes.start import start_routes
+from infrastructure.persistence.persistence_container import PersistenceContainer
+from presentation.api.routes.start_routes import start_routes
 
 app = Flask(__name__)
 

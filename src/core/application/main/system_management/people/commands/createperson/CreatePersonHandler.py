@@ -3,13 +3,13 @@
 """
 from mediatr import Mediator
 
-from CreatePersonCommand import CreatePersonCommand
-from CreatePersonVm import CreatePersonVm
+from .CreatePersonCommand import CreatePersonCommand
+from .CreatePersonVm import CreatePersonVm
 
 @Mediator.handler
 class CreatePersonHandler():
     """ ToDo: DocString """
-    def handle(self, request: CreatePersonCommand):
+    def handle(self, request: CreatePersonCommand) -> CreatePersonVm:
         """ ToDo: DocString """
         create_person_vm = CreatePersonVm()
         create_person_vm.name = request.name
