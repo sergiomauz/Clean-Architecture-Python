@@ -7,7 +7,7 @@
 
 from dependency_injector import containers, providers
 from infrastructure.persistence.postgresql.main.services.system_management.people import PeopleService
-from settings import SettingsService
+from startup import SettingsService
 
 
 class PersistenceContainer(containers.DeclarativeContainer):

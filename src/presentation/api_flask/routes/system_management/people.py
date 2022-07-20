@@ -7,8 +7,9 @@
 
 from mediatr import Mediator
 from flask import Blueprint, request
+from startup import MediatorContainer
 from core.application.main.system_management.people.commands.create_person import (
-    CreatePersonCommand, CreatePersonCommandDto, CreatePersonVm, CreatePersonHandler)
+    CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
 
 people = Blueprint("people", __name__)
 mediator = Mediator()
@@ -16,8 +17,7 @@ mediator = Mediator()
 @people.route("/", methods=["POST"])
 async def create_person():
     """ ToDo: DocString """
-    dto = CreatePersonCommandDto(request.json)
-    command = CreatePersonCommand(dto)
+    command = CreatePersonCommand(request.json)
     view_model = await mediator.send_async(command)
 
     return view_model.json

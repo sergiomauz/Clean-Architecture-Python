@@ -2,9 +2,11 @@
     ToDo: DocString
 """
 
+from mediatr import Mediator
 from flask import Blueprint
 
 user_account_groups = Blueprint("userAccountGroups", __name__)
+mediator = Mediator()
 
 @user_account_groups.route("/", methods=["POST"])
 def create_user_account_group():
