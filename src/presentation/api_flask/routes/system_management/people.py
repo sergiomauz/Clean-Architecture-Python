@@ -5,21 +5,27 @@
     ToDo: DocString
 """
 
-from mediatr import Mediator
 from flask import Blueprint, request
-from startup import MediatorContainer
+from dependency_injector.wiring import inject, Provide
+from startup import MediatorContainer, wire_mediator
+
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
 
 people = Blueprint("people", __name__)
-mediator = Mediator()
+
+@people.before_request
+def before_request_callback():
+    """ ToDo: DocString """
+    wire_mediator(__name__)
+
 
 @people.route("/", methods=["POST"])
-async def create_person():
+@inject
+async def create_person(mediator = Provide[MediatorContainer.mediator_service]):
     """ ToDo: DocString """
     command = CreatePersonCommand(request.json)
     view_model = await mediator.send_async(command)
-
     return view_model.json
 
 

@@ -1,5 +1,6 @@
 # pylint: disable=invalid-name
 # pylint: disable=too-few-public-methods
+# pylint: disable=c-extension-no-member
 
 """
     ToDo: DocString
@@ -30,7 +31,7 @@ class SettingsService:
         return self.__value[key]
 
 
-def wire_mediator(module_name):
+def wire_mediator(module_name: str):
     """ ToDo: DocString """
     mediator_container = MediatorContainer()
     mediator_container.wire(modules = [sys.modules[module_name]])

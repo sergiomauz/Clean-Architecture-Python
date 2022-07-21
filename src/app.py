@@ -13,9 +13,4 @@ app = Flask(__name__)
 start_routes(app)
 
 if __name__ == '__main__':
-    persistence_container = PersistenceContainer()
-    persistence_container.wire(modules = [sys.modules[__name__]])
-
-    print(type(__name__))
-
     app.run(debug = True)

@@ -17,6 +17,6 @@ class PersistenceContainer(containers.DeclarativeContainer):
     )
 
     people_service = providers.Singleton(
-        PeopleService,
-        settings_service
+        PeopleService
+        # settings_service
     )
