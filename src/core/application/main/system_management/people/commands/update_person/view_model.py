@@ -1,15 +1,18 @@
 # pylint: disable=too-few-public-methods
+# pylint: disable=too-many-arguments
 # pylint: disable=missing-class-docstring
-# pylint: disable=invalid-name
 # pylint: disable=import-error
 
 """
     ToDo: DocString
 """
 
-class CreatePersonVm:
+from core.common.models.jsonable import Jsonable
+
+class UpdatePersonVm(Jsonable):
     def __init__(self, uid, name, last_name, created_at, modified_at):
-        self.uid = uid
+        super().__init__()
+        self.uid = str(uid)
         self.name = name
         self.last_name = last_name
         self.created_at = (created_at.isoformat() if created_at is not None else None)

@@ -15,6 +15,6 @@ from .view_model import CreatePersonVm
 class CreatePersonHandler:
     def handle(self, command: CreatePersonCommand) -> CreatePersonVm:
         create_person_vm = CreatePersonVm(
-            None, command.name, command.last_name, datetime.utcnow(), datetime.utcnow())
+            None, command.name, command.last_name, datetime.utcnow(), None)
 
         return create_person_vm

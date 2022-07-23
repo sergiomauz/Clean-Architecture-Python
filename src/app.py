@@ -2,9 +2,7 @@
     ToDo: DocString
 """
 
-import sys
 from flask import Flask
-from infrastructure.persistence.persistence_container import PersistenceContainer
 from presentation.api_flask.routes.start_routes import start_routes
 
 app = Flask(__name__)

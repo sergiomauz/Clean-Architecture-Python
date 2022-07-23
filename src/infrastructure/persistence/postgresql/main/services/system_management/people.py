@@ -2,7 +2,7 @@
     ToDo: DocString
 """
 
-from startup import SettingsService
+from presentation.startup import SettingsService
 
 class PeopleService:
     """ ToDo: DocString """

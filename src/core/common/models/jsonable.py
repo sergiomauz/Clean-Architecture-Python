@@ -10,9 +10,10 @@
 import json
 
 class Jsonable:
-    def __init__(self):
-        pass
+    @property
+    def string(self):
+        return json.dumps(self.__dict__, default = lambda obj: obj.__dict__)
 
     @property
     def json(self):
-        return json.loads(json.dumps(self.__dict__, default = lambda obj: obj.__dict__))
+        return json.loads(self.string)

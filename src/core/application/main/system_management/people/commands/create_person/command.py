@@ -5,7 +5,10 @@
     ToDo: DocString
 """
 
+from typing import Any
+
+
 class CreatePersonCommand:
-    def __init__(self, request_body: dict):
-        self.name = request_body["name"]
-        self.last_name = request_body["last_name"]
+    def __init__(self, request: Any):
+        self.name = request.json["name"]
+        self.last_name = request.json["last_name"]

@@ -5,28 +5,35 @@
     ToDo: DocString
 """
 
-from flask import Blueprint, request
-from dependency_injector.wiring import inject, Provide
-from startup import MediatorContainer, wire_mediator
+from flask import Blueprint, Response, request
+from mediatr import Mediator
+from presentation.api_flask.common import ApiResponseVm, Constants
 
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
 
-people = Blueprint("people", __name__)
+from core.application.main.system_management.people.commands.update_person import (
+    UpdatePersonCommand, UpdatePersonVm, UpdatePersonHandler)
+from core.application.main.system_management.people.commands.delete_person import (
+    DeletePersonCommand, DeletePersonVm, DeletePersonHandler)
 
-@people.before_request
-def before_request_callback():
-    """ ToDo: DocString """
-    wire_mediator(__name__)
+
+people = Blueprint("people", __name__)
+mediator = Mediator()
 
 
 @people.route("/", methods=["POST"])
-@inject
-async def create_person(mediator = Provide[MediatorContainer.mediator_service]):
+async def create_person():
     """ ToDo: DocString """
-    command = CreatePersonCommand(request.json)
-    view_model = await mediator.send_async(command)
-    return view_model.json
+    command = CreatePersonCommand(request)
+    application_view_model = await mediator.send_async(command)
+    api_response_view_model = ApiResponseVm(application_view_model)
+
+    return Response(
+        response = api_response_view_model.json_string,
+        status = api_response_view_model.result.http_code,
+        mimetype = Constants.MIMETYPE_JSON
+    )
 
 
 @people.route("/<uid>", methods=["GET"])
@@ -41,13 +48,29 @@ def search_people():
     return "search_people"
 
 
-@people.route("/<uid>", methods=["PUT"])
-def update_person(uid):
+@people.route("/", methods=["PUT"])
+async def update_person():
     """ ToDo: DocString """
-    return f"update_person {uid}"
+    command = UpdatePersonCommand(request)
+    application_view_model = await mediator.send_async(command)
+    api_response_view_model = ApiResponseVm(application_view_model)
+
+    return Response(
+        response = api_response_view_model.json_string,
+        status = api_response_view_model.result.http_code,
+        mimetype = Constants.MIMETYPE_JSON
+    )
 
 
 @people.route("/", methods=["DELETE"])
-def delete_person():
+async def delete_person():
     """ ToDo: DocString """
-    return "delete_person"
+    command = DeletePersonCommand(request)
+    application_view_model = await mediator.send_async(command)
+    api_response_view_model = ApiResponseVm(application_view_model)
+
+    return Response(
+        response = api_response_view_model.json_string,
+        status = api_response_view_model.result.http_code,
+        mimetype = Constants.MIMETYPE_JSON
+    )
