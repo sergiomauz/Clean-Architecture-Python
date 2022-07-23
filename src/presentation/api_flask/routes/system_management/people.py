@@ -5,13 +5,17 @@
     ToDo: DocString
 """
 
+import uuid
 from flask import Blueprint, Response, request
 from mediatr import Mediator
 from presentation.api_flask.common import ApiResponseVm, Constants
 
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
-
+from core.application.main.system_management.people.queries.get_person import (
+    GetPersonQuery, GetPersonVm, GetPersonHandler)
+from core.application.main.system_management.people.queries.search_people import (
+    SearchPeopleQuery, SearchPeopleVm, SearchPeopleHandler)
 from core.application.main.system_management.people.commands.update_person import (
     UpdatePersonCommand, UpdatePersonVm, UpdatePersonHandler)
 from core.application.main.system_management.people.commands.delete_person import (
@@ -36,16 +40,31 @@ async def create_person():
     )
 
 
-@people.route("/<uid>", methods=["GET"])
-def read_person(uid):
-    """ ToDo: DocString """
-    return f"read_person {uid}"
-
-
 @people.route("/", methods=["GET"])
-def search_people():
+async def search_people():
     """ ToDo: DocString """
-    return "search_people"
+    query = SearchPeopleQuery(request)
+    application_view_model = await mediator.send_async(query)
+    api_response_view_model = ApiResponseVm(application_view_model)
+
+    return Response(
+        response = api_response_view_model.json_string,
+        status = api_response_view_model.result.http_code,
+        mimetype = Constants.MIMETYPE_JSON
+    )
+
+@people.route("/<uid>", methods=["GET"])
+async def read_person(uid: uuid):
+    """ ToDo: DocString """
+    query = GetPersonQuery(uid)
+    application_view_model = await mediator.send_async(query)
+    api_response_view_model = ApiResponseVm(application_view_model)
+
+    return Response(
+        response = api_response_view_model.json_string,
+        status = api_response_view_model.result.http_code,
+        mimetype = Constants.MIMETYPE_JSON
+    )
 
 
 @people.route("/", methods=["PUT"])

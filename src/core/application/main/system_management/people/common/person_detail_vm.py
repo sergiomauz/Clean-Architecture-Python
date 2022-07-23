@@ -8,18 +8,16 @@
     ToDo: DocString
 """
 
+import uuid
 from datetime import datetime
+from .basic_person_vm import BasicPersonVm
 
 
-class CreatePersonVm:
+class PersonDetailVm(BasicPersonVm):
     def __init__(self,
-                 uid: None,
+                 uid: uuid,
                  name: str,
                  last_name: str,
                  created_at: datetime,
                  modified_at: datetime) -> None:
-        self.uid = uid
-        self.name = name
-        self.last_name = last_name
-        self.created_at = (created_at.isoformat() if created_at is not None else None)
-        self.modified_at = (modified_at.isoformat() if modified_at is not None else None)
+        super().__init__(self, uid, name, last_name, created_at, modified_at)

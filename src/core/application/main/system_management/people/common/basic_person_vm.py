@@ -11,7 +11,7 @@
 from datetime import datetime
 
 
-class CreatePersonVm:
+class BasicPersonVm:
     def __init__(self,
                  uid: None,
                  name: str,
@@ -21,5 +21,5 @@ class CreatePersonVm:
         self.uid = uid
         self.name = name
         self.last_name = last_name
-        self.created_at = (created_at.isoformat() if created_at is not None else None)
-        self.modified_at = (modified_at.isoformat() if modified_at is not None else None)
+        self.created_at = created_at
+        self.modified_at = modified_at
