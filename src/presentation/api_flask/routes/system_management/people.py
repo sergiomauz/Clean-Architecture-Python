@@ -6,8 +6,9 @@
 """
 
 import uuid
-from flask import Blueprint, Response, request
 from mediatr import Mediator
+from flask import Blueprint, Response, request
+
 from presentation.api_flask.common import ApiResponseVm, Constants
 
 from core.application.main.system_management.people.commands.create_person import (
@@ -52,6 +53,7 @@ async def search_people():
         status = api_response_view_model.result.http_code,
         mimetype = Constants.MIMETYPE_JSON
     )
+
 
 @people.route("/<uid>", methods=["GET"])
 async def read_person(uid: uuid):

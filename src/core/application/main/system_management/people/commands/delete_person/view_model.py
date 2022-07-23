@@ -1,15 +1,14 @@
 # pylint: disable=too-few-public-methods
-# pylint: disable=too-many-arguments
 # pylint: disable=missing-class-docstring
+# pylint: disable=invalid-name
 # pylint: disable=import-error
+# pylint: disable=too-many-arguments
 
 """
     ToDo: DocString
 """
 
-from core.common.models.jsonable import Jsonable
 
-class DeletePersonVm(Jsonable):
-    def __init__(self, were_deleted: bool):
-        super().__init__()
+class DeletePersonVm:
+    def __init__(self, were_deleted: bool = False):
         self.were_deleted = were_deleted
