@@ -8,16 +8,17 @@
     ToDo: DocString
 """
 
+import uuid
 from datetime import datetime
 
 
 class BasicPersonVm:
     def __init__(self,
-                 uid: None,
-                 name: str,
-                 last_name: str,
-                 created_at: datetime,
-                 modified_at: datetime) -> None:
+                 uid: uuid = None,
+                 name: str = None,
+                 last_name: str = None,
+                 created_at: datetime = None,
+                 modified_at: datetime = None) -> None:
         self.uid = uid
         self.name = name
         self.last_name = last_name

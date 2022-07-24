@@ -8,9 +8,20 @@
     ToDo: DocString
 """
 
-from core.application.main.system_management.people.queries.get_person.view_model import GetPersonVm
+import uuid
+from datetime import datetime
+from core.application.main.system_management.people.common import BasicPersonVm
 
 
-class SearchPeopleVm:
-    def __init__(self, get_person_vm: GetPersonVm = None) -> None:
-        self.get_person_vm = get_person_vm
+class SearchPeopleVm(BasicPersonVm):
+    def __init__(self,
+                 uid: uuid = None,
+                 name: str = None,
+                 last_name: str = None,
+                 created_at: datetime = None,
+                 modified_at: datetime = None) -> None:
+        self.uid = uid
+        self.name = name
+        self.last_name = last_name
+        self.created_at = (created_at.isoformat() if created_at is not None else None)
+        self.modified_at = (modified_at.isoformat() if modified_at is not None else None)

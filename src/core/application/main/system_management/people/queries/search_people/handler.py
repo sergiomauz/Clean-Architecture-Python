@@ -19,7 +19,7 @@ class SearchPeopleHandler:
         people_items = people_list
         total_items = 58
 
-        search_people_vm = PagerVm(
+        search_people_vm = PagerVm[SearchPeopleVm](
             items = people_items,
             total_items = total_items,
             current_page = query.basic_search_parameters.current_page,

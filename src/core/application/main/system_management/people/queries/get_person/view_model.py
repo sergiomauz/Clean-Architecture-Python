@@ -8,11 +8,12 @@
     ToDo: DocString
 """
 
-from datetime import datetime
 import uuid
+from datetime import datetime
+from core.application.main.system_management.people.common import PersonDetailVm
 
 
-class GetPersonVm:
+class GetPersonVm(PersonDetailVm):
     def __init__(self,
                  uid: uuid = None,
                  name: str = None,

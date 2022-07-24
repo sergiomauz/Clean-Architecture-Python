@@ -15,9 +15,9 @@ from .basic_person_vm import BasicPersonVm
 
 class PersonDetailVm(BasicPersonVm):
     def __init__(self,
-                 uid: uuid,
-                 name: str,
-                 last_name: str,
-                 created_at: datetime,
-                 modified_at: datetime) -> None:
-        super().__init__(self, uid, name, last_name, created_at, modified_at)
+                 uid: uuid = None,
+                 name: str = None,
+                 last_name: str = None,
+                 created_at: datetime = None,
+                 modified_at: datetime = None) -> None:
+        super().__init__(uid, name, last_name, created_at, modified_at)

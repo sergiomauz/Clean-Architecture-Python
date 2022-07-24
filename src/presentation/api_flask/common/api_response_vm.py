@@ -16,6 +16,7 @@ class ApiResponseVm:
     def __init__(self, info: Any = None):
         self.info = info
         self.result = ApiResultVm()
+        del self.info.__orig_class__
 
     @property
     def json_string(self):
