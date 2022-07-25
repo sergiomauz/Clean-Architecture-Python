@@ -9,8 +9,6 @@ import uuid
 from mediatr import Mediator
 from flask import Blueprint, Response, request
 
-from presentation.api_flask.common import ApiResponseVm, Constants
-
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
 from core.application.main.system_management.people.queries.get_person import (
@@ -21,6 +19,8 @@ from core.application.main.system_management.people.commands.update_person impor
     UpdatePersonCommand, UpdatePersonVm, UpdatePersonHandler)
 from core.application.main.system_management.people.commands.delete_person import (
     DeletePersonCommand, DeletePersonVm, DeletePersonHandler)
+
+from presentation.api.common import ApiResponseVm, Constants
 
 
 people = Blueprint("people", __name__)
@@ -36,7 +36,7 @@ async def create_person():
 
     return Response(
         response = api_response_view_model.json_string,
-        status = api_response_view_model.result.http_code,
+        status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
 
@@ -50,7 +50,7 @@ async def search_people():
 
     return Response(
         response = api_response_view_model.json_string,
-        status = api_response_view_model.result.http_code,
+        status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
 
@@ -64,7 +64,7 @@ async def read_person(uid: uuid):
 
     return Response(
         response = api_response_view_model.json_string,
-        status = api_response_view_model.result.http_code,
+        status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
 
@@ -78,7 +78,7 @@ async def update_person():
 
     return Response(
         response = api_response_view_model.json_string,
-        status = api_response_view_model.result.http_code,
+        status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
 
@@ -92,6 +92,6 @@ async def delete_person():
 
     return Response(
         response = api_response_view_model.json_string,
-        status = api_response_view_model.result.http_code,
+        status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )

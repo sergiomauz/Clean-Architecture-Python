@@ -9,10 +9,10 @@
 
 class ApiResultVm:
     def __init__(self,
-                 http_code: int = 200,
-                 message: str = "",
+                 status_code: int = 200,
+                 is_exception: bool = False,
                  style: str = ""):
-        self.http_code = http_code
-        self.message = message
+        self.status_code = status_code
+        self.is_exception = is_exception
         self.style = style
         

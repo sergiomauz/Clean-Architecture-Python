@@ -12,3 +12,4 @@ class CreatePersonCommand:
     def __init__(self, request: Any):
         self.name = request.json["name"]
         self.last_name = request.json["last_name"]
+        self.x = 1 / 0

@@ -22,7 +22,7 @@ class PagerVm(Generic[T]):
 
         if page_size > 0:
             self.page_size = page_size
-            self.total_pages = math.ceil(self.total_items / self.page_size)
+            self.total_pages = int(math.ceil(self.total_items / self.page_size))
             if self.total_pages == 0:
                 self.total_pages = 1
         else:
