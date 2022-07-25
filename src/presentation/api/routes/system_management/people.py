@@ -9,6 +9,7 @@ import uuid
 from mediatr import Mediator
 from flask import Blueprint, Response, request
 
+from core.common.utils import Constants
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
 from core.application.main.system_management.people.queries.get_person import (
@@ -20,12 +21,11 @@ from core.application.main.system_management.people.commands.update_person impor
 from core.application.main.system_management.people.commands.delete_person import (
     DeletePersonCommand, DeletePersonVm, DeletePersonHandler)
 
-from presentation.api.common import ApiResponseVm, Constants
+from presentation.api.common import ApiResponseVm
 
 
 people = Blueprint("people", __name__)
 mediator = Mediator()
-
 
 @people.route("/", methods=["POST"])
 async def create_person():
@@ -40,7 +40,6 @@ async def create_person():
         mimetype = Constants.MIMETYPE_JSON
     )
 
-
 @people.route("/", methods=["GET"])
 async def search_people():
     """ ToDo: DocString """
@@ -53,7 +52,6 @@ async def search_people():
         status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
-
 
 @people.route("/<uid>", methods=["GET"])
 async def read_person(uid: uuid):
@@ -68,7 +66,6 @@ async def read_person(uid: uuid):
         mimetype = Constants.MIMETYPE_JSON
     )
 
-
 @people.route("/", methods=["PUT"])
 async def update_person():
     """ ToDo: DocString """
@@ -81,7 +78,6 @@ async def update_person():
         status = api_response_view_model.result.status_code,
         mimetype = Constants.MIMETYPE_JSON
     )
-
 
 @people.route("/", methods=["DELETE"])
 async def delete_person():
