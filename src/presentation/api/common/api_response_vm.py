@@ -32,10 +32,18 @@ class ApiResponseVm:
                 self.info = ApiMessageVm(
                     message = "There was an unhandled error. Please contact the Administrator"
                 )
+            elif info.status_code >= 400 and "(type=value_error)" in info.description:
+                new_description = info.description.replace("(type=value_error)","").split("\n")
+                new_description.pop(0)
+                new_description = [item.strip() for item in new_description]
+                self.info = ApiMessageVm(
+                    message = "\n".join(new_description)
+                )
             else:
                 self.info = ApiMessageVm(
                     message = info.description
                 )
+
             self.result = ApiResultVm(
                 status_code = info.status_code,
                 is_exception = True,
