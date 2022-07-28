@@ -1,6 +1,3 @@
-# pylint: disable=unused-import
-# pylint: disable=import-error
-
 """
     ToDo: DocString
 """
@@ -43,7 +40,7 @@ async def create_person():
 @people.route("/", methods=["GET"])
 async def search_people():
     """ ToDo: DocString """
-    query = SearchPeopleQuery(request)
+    query = SearchPeopleQuery.new(request)
     application_view_model = await mediator.send_async(query)
     api_response_view_model = ApiResponseVm(application_view_model)
 
@@ -56,7 +53,7 @@ async def search_people():
 @people.route("/<uid>", methods=["GET"])
 async def read_person(uid: uuid):
     """ ToDo: DocString """
-    query = GetPersonQuery(uid)
+    query = GetPersonQuery.new(uid)
     application_view_model = await mediator.send_async(query)
     api_response_view_model = ApiResponseVm(application_view_model)
 
@@ -82,7 +79,7 @@ async def update_person():
 @people.route("/", methods=["DELETE"])
 async def delete_person():
     """ ToDo: DocString """
-    command = DeletePersonCommand(request)
+    command = DeletePersonCommand.new(request)
     application_view_model = await mediator.send_async(command)
     api_response_view_model = ApiResponseVm(application_view_model)
 

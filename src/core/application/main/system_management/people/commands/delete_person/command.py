@@ -1,14 +1,24 @@
-# pylint: disable=too-few-public-methods
-# pylint: disable=too-many-arguments
-# pylint: disable=missing-class-docstring
-# pylint: disable=import-error
-
 """
     ToDo: DocString
 """
-from typing import Any
+
+import uuid
+from typing import Any, List
+from pydantic import validator
+
+from core.common.errors import (
+    DeferredValidator)
 
 
-class DeletePersonCommand:
-    def __init__(self, request: Any):
-        self.uids = request.json["uids"]
+class DeletePersonCommand(DeferredValidator):
+    """ ToDo: DocString """
+    uids: List[str]
+
+    @classmethod
+    def new(cls, request: Any):
+        """ ToDo: DocString """
+        uids = request.json["uids"]
+
+        new_instance = cls.create_instance(uids = uids)
+
+        return new_instance.validate()

@@ -30,6 +30,10 @@ class DeferrableValidator(Generic[T]):
 class DeferredValidator(BaseModel):
     """ ToDo: DocString """
 
+    class Config:
+        """ ToDo: DocString """
+        arbitrary_types_allowed = True
+
     @classmethod
     def create_instance(cls: Type[T], **kwargs: Any) -> DeferrableValidator[T]:
         """ ToDo: DocString """
