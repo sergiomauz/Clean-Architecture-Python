@@ -2,6 +2,7 @@
     ToDo: DocString
 """
 
+
 from typing import Any
 from mediatr import Mediator
 from flask import Response
@@ -17,10 +18,10 @@ mediator = Mediator()
 
 class CustomExceptionsHandler:
     """ ToDo: DocString """
+
     def start_custom_exceptions(self, app):
         """ ToDo: DocString """
         app.register_error_handler(Exception, self.api_error_response)
-
 
     def api_error_response(self, exception : Any):
         """ ToDo: DocString """

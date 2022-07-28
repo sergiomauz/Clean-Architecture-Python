@@ -5,10 +5,10 @@
     ToDo: DocString
 """
 
+
 import uuid
 from mediatr import Mediator
 from flask import Blueprint, Response, request
-
 from core.common.utils import Constants
 from core.application.main.system_management.people.commands.create_person import (
     CreatePersonCommand, CreatePersonVm, CreatePersonHandler)
@@ -20,7 +20,6 @@ from core.application.main.system_management.people.commands.update_person impor
     UpdatePersonCommand, UpdatePersonVm, UpdatePersonHandler)
 from core.application.main.system_management.people.commands.delete_person import (
     DeletePersonCommand, DeletePersonVm, DeletePersonHandler)
-
 from presentation.api.common import ApiResponseVm
 
 

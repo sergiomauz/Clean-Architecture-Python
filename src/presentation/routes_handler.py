@@ -2,9 +2,11 @@
     ToDo: DocString
 """
 
+
 from core.common.utils import Constants
 from .api.routes.system_management import (
     people, user_account_groups, user_accounts)
+
 
 class RoutesHandler:
     """ ToDo: DocString """

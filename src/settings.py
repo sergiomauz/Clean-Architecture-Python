@@ -1,10 +1,7 @@
-# pylint: disable=invalid-name
-# pylint: disable=too-few-public-methods
-# pylint: disable=c-extension-no-member
-
 """
     ToDo: DocString
 """
+
 
 import os
 from dotenv import load_dotenv
