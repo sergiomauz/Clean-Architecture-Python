@@ -69,7 +69,7 @@ async def read_person(uid: uuid):
 @people.route("/", methods=["PUT"])
 async def update_person():
     """ ToDo: DocString """
-    command = UpdatePersonCommand(request)
+    command = UpdatePersonCommand.new(request)
     application_view_model = await mediator.send_async(command)
     api_response_view_model = ApiResponseVm(application_view_model)
 

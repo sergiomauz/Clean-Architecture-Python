@@ -1,11 +1,6 @@
 ************* Module settings
 src/settings.py:23:24: I1101: Module 'dependency_injector.containers' has no 'DeclarativeContainer' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 src/settings.py:25:23: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-************* Module core.application.main.system_management.people.commands.create_person.command
-src/core/application/main/system_management/people/commands/create_person/command.py:6:0: E0611: No name 'BaseModel' in module 'pydantic' (no-name-in-module)
-src/core/application/main/system_management/people/commands/create_person/command.py:8:0: C0115: Missing class docstring (missing-class-docstring)
-src/core/application/main/system_management/people/commands/create_person/command.py:22:4: E0213: Method should have "self" as first argument (no-self-argument)
-src/core/application/main/system_management/people/commands/create_person/command.py:31:4: E0213: Method should have "self" as first argument (no-self-argument)
 ************* Module core.application.main.system_management.people.commands.delete_person.handler
 src/core/application/main/system_management/people/commands/delete_person/handler.py:15:21: W0613: Unused argument 'command' (unused-argument)
 ************* Module core.application.main.system_management.people.queries.get_person.handler
@@ -24,7 +19,6 @@ src/infrastructure/external_services/ExternalServicesContainer.py:1:0: C0103: Mo
 src/infrastructure/local_services/LocalServiceContainer.py:1:0: C0103: Module name "LocalServiceContainer" doesn't conform to snake_case naming style (invalid-name)
 ************* Module infrastructure.persistence.persistence_container
 src/infrastructure/persistence/persistence_container.py:9:0: C0301: Line too long (102/100) (line-too-long)
-src/infrastructure/persistence/persistence_container.py:10:0: E0611: No name 'startup' in module 'presentation' (no-name-in-module)
 src/infrastructure/persistence/persistence_container.py:13:27: I1101: Module 'dependency_injector.containers' has no 'DeclarativeContainer' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 src/infrastructure/persistence/persistence_container.py:15:23: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 src/infrastructure/persistence/persistence_container.py:19:21: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
@@ -34,31 +28,21 @@ src/infrastructure/persistence/postgresql/main/mapping/person.py:14:16: E0602: U
 ************* Module infrastructure.persistence.postgresql.main.mapping.UserAccountsMap
 src/infrastructure/persistence/postgresql/main/mapping/UserAccountsMap.py:1:0: C0103: Module name "UserAccountsMap" doesn't conform to snake_case naming style (invalid-name)
 ************* Module infrastructure.persistence.postgresql.main.services.system_management.people
-src/infrastructure/persistence/postgresql/main/services/system_management/people.py:5:0: E0611: No name 'startup' in module 'presentation' (no-name-in-module)
 src/infrastructure/persistence/postgresql/main/services/system_management/people.py:12:4: C0116: Missing function or method docstring (missing-function-docstring)
 src/infrastructure/persistence/postgresql/main/services/system_management/people.py:12:23: C0103: Argument name "p" doesn't conform to snake_case naming style (invalid-name)
-************* Module infrastructure.persistence.postgresql.main.services.system_management.user_accounts
-src/infrastructure/persistence/postgresql/main/services/system_management/user_accounts.py:5:0: E0611: No name 'startup' in module 'presentation' (no-name-in-module)
-************* Module infrastructure.persistence.postgresql.main.services.system_management.user_account_groups
-src/infrastructure/persistence/postgresql/main/services/system_management/user_account_groups.py:5:0: E0611: No name 'startup' in module 'presentation' (no-name-in-module)
-************* Module presentation.custom_exceptions_handler
-src/presentation/custom_exceptions_handler.py:21:0: C0303: Trailing whitespace (trailing-whitespace)
-src/presentation/custom_exceptions_handler.py:27:31: C0303: Trailing whitespace (trailing-whitespace)
+************* Module presentation.api.common.api_response_vm
+src/presentation/api/common/api_response_vm.py:45:23: R1704: Redefining argument with the local name 'info_value' (redefined-argument-from-local)
 ************* Module presentation.api.routes.system_management.__init__
 src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar lines in 2 files
 ==presentation.api.routes.system_management.people:[34:45]
 ==presentation.custom_exceptions_handler:[29:36]
-    api_response_view_model = ApiResponseVm(application_view_model)
+        api_response_view_model = ApiResponseVm(application_view_model)
 
-    return Response(
-        response = api_response_view_model.json_string,
-        status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
-    )
-
-@people.route("/", methods=["GET"])
-async def search_people():
-    """ ToDo: DocString """ (duplicate-code)
+        return Response(
+            response = api_response_view_model.json_string,
+            status = api_response_view_model.result.status_code,
+            mimetype = Constants.MIMETYPE_JSON
+        ) (duplicate-code)
 src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar lines in 2 files
 ==core.application.main.system_management.people.commands.create_person.view_model:[21:26]
 ==core.application.main.system_management.people.queries.get_person.view_model:[22:27]
@@ -69,5 +53,5 @@ src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar li
         self.modified_at = (modified_at.isoformat() if modified_at is not None else None) (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 8.57/10 (previous run: 8.62/10, -0.05)
+Your code has been rated at 9.45/10 (previous run: 9.45/10, +0.00)
 

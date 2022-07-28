@@ -11,7 +11,6 @@ from core.common.errors import (
 
 class CreatePersonCommand(DeferredValidator):
     """ ToDo: DocString """
-
     name: str
     last_name: str
 
@@ -22,8 +21,6 @@ class CreatePersonCommand(DeferredValidator):
         last_name = request.json["last_name"]
 
         new_instance = cls.create_instance(name = name, last_name = last_name)
-        x = 1 / 0
-        # raise ValueError("Erorororroro")
 
         return new_instance.validate()
 

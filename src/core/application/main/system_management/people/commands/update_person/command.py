@@ -1,22 +1,28 @@
-# pylint: disable=too-few-public-methods
-# pylint: disable=too-many-arguments
-# pylint: disable=missing-class-docstring
-# pylint: disable=import-error
-
 """
     ToDo: DocString
 """
 
-from typing import Any
 import uuid
+from typing import Any
+from pydantic import validator
+
+from core.common.errors import (
+    DeferredValidator)
 
 
-class UpdatePersonCommand:
-    def __init__(self, request: Any):
-        self.uid = uuid.UUID(request.json["uid"])
-        self.name = request.json["name"]
-        self.last_name = request.json["last_name"]
+class UpdatePersonCommand(DeferredValidator):
+    """ ToDo: DocString """
+    uid: uuid.UUID
+    name: str
+    last_name: str
 
-        self.endpoint = request.url
-        self.method = request.method
-        self.remote_ip = request.remote_addr
+    @classmethod
+    def new(cls, request: Any):
+        """ ToDo: DocString """
+        uid = uuid.UUID(request.json["uid"])
+        name = request.json["name"]
+        last_name = request.json["last_name"]
+
+        new_instance = cls.create_instance(uid = uid, name = name, last_name = last_name)
+
+        return new_instance.validate()
