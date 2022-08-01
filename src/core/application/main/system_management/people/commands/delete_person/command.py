@@ -6,7 +6,7 @@ import uuid
 from typing import Any, List
 from pydantic import validator
 
-from core.common.errors import (
+from core.common.validators import (
     DeferredValidator)
 
 

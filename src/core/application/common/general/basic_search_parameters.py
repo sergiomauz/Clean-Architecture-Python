@@ -5,7 +5,7 @@
 from typing import Any
 from pydantic import validator
 
-from core.common.errors import (
+from core.common.validators import (
     DeferredValidator)
 
 

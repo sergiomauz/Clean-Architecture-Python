@@ -1,9 +1,3 @@
-# pylint: disable=too-few-public-methods
-# pylint: disable=missing-class-docstring
-# pylint: disable=invalid-name
-# pylint: disable=import-error
-# pylint: disable=too-many-arguments
-
 """
     ToDo: DocString
 """
@@ -13,12 +7,16 @@ from datetime import datetime
 
 
 class BasicPersonVm:
+    """ ToDo: DocString """
+
     def __init__(self,
                  uid: uuid = None,
                  name: str = None,
                  last_name: str = None,
                  created_at: datetime = None,
-                 modified_at: datetime = None) -> None:
+                 modified_at: datetime = None):
+        """ ToDo: DocString """
+
         self.uid = uid
         self.name = name
         self.last_name = last_name

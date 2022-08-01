@@ -5,7 +5,7 @@
 import json
 from typing import Any
 
-from core.application.main.system_management.error_log.commands.create_error_log import (
+from core.application.main.system_management.errors_log.commands.create_error_log import (
     CreateErrorLogVm)
 
 from .api_result_vm import ApiResultVm

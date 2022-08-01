@@ -1,12 +1,10 @@
-# pylint: disable=invalid-name
-# pylint: disable=too-few-public-methods
-
 """
     ToDo: DocString
 """
 
 from dependency_injector import containers, providers
-from infrastructure.persistence.postgresql.main.services.system_management.people import PeopleService
+from infrastructure.persistence.postgresql.main.services.system_management.people import (
+    PeopleService)
 from presentation.startup import SettingsService
 
 

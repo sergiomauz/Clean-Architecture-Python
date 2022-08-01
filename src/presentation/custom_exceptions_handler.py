@@ -8,16 +8,15 @@ from mediatr import Mediator
 from flask import Response
 
 from core.common.utils import Constants
-from core.application.main.system_management.error_log.commands.create_error_log import (
+from core.application.main.system_management.errors_log.commands.create_error_log import (
     CreateErrorLogCommand, CreateErrorLogVm, CreateErrorLogHandler)
 
 from .api.common import ApiResponseVm
 
 
-mediator = Mediator()
-
 class CustomExceptionsHandler:
     """ ToDo: DocString """
+    mediator = Mediator()
 
     def start_custom_exceptions(self, app):
         """ ToDo: DocString """
@@ -26,8 +25,8 @@ class CustomExceptionsHandler:
     def api_error_response(self, exception : Any):
         """ ToDo: DocString """
         command = CreateErrorLogCommand(exception)
-        application_view_model = mediator.send(command)
-        api_response_view_model = ApiResponseVm(application_view_model)
+        error_view_model = self.mediator.send(command)
+        api_response_view_model = ApiResponseVm(error_view_model)
 
         return Response(
             response = api_response_view_model.json_string,

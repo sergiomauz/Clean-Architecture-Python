@@ -3,7 +3,7 @@
 """
 
 
-from typing import TypeVar, TYPE_CHECKING, Dict, Any, Generic, Type
+from typing import TypeVar, Dict, Any, Generic, Type
 from pydantic import BaseModel
 
 

@@ -1,8 +1,3 @@
-# pylint: disable=missing-module-docstring
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=invalid-name
-
 """
     ToDo: DocString
 """
@@ -10,15 +5,9 @@
 from named_entity import NamedEntity
 
 class Person(NamedEntity):
+    """ ToDo: DocString """
+
     def __init__(self):
+        """ ToDo: DocString """
         super().__init__()
         self.last_name = None
-
-    @property
-    def last_name(self):
-        return self.last_name
-
-    @last_name.setter
-    def last_name(self, new_value):
-        self.last_name = new_value
-    

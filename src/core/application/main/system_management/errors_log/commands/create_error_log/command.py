@@ -1,6 +1,3 @@
-# pylint: disable=missing-class-docstring
-# pylint: disable=too-few-public-methods
-
 """
     ToDo: DocString
 """
@@ -10,7 +7,11 @@ from typing import Any
 from pydantic import ValidationError
 
 class CreateErrorLogCommand:
+    """ ToDo: DocString """
+
     def __init__(self, exception: Any = None):
+        """ ToDo: DocString """
+
         self.description = str(exception)
         self.stack_trace = "".join(traceback.format_tb(exception.__traceback__))
 

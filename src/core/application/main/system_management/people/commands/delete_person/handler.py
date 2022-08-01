@@ -1,7 +1,3 @@
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=too-few-public-methods
-
 """
     ToDo: DocString
 """
@@ -12,7 +8,11 @@ from .view_model import DeletePersonVm
 
 @Mediator.handler
 class DeletePersonHandler:
+    """ ToDo: DocString """
+
     def handle(self, command: DeletePersonCommand) -> DeletePersonVm:
+        """ ToDo: DocString """
+
         delete_person_vm = DeletePersonVm(True)
 
         return delete_person_vm

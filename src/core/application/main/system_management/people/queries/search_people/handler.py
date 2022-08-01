@@ -1,20 +1,20 @@
-# pylint: disable=missing-class-docstring
-# pylint: disable=missing-function-docstring
-# pylint: disable=too-few-public-methods
-
 """
     ToDo: DocString
 """
 
 from mediatr import Mediator
+from core.application.common.general import PagerVm
 from .query import SearchPeopleQuery
 from .view_model import SearchPeopleVm
-from core.application.common.general import PagerVm
 
 
 @Mediator.handler
 class SearchPeopleHandler:
+    """ ToDo: DocString """
+
     def handle(self, query: SearchPeopleQuery) -> PagerVm[SearchPeopleVm]:
+        """ ToDo: DocString """
+
         people_list = []
         people_items = people_list
         total_items = 58

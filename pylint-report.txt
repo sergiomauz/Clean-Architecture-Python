@@ -2,15 +2,15 @@
 src/settings.py:23:24: I1101: Module 'dependency_injector.containers' has no 'DeclarativeContainer' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 src/settings.py:25:23: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 ************* Module core.application.main.system_management.people.commands.delete_person.handler
-src/core/application/main/system_management/people/commands/delete_person/handler.py:15:21: W0613: Unused argument 'command' (unused-argument)
+src/core/application/main/system_management/people/commands/delete_person/handler.py:13:21: W0613: Unused argument 'command' (unused-argument)
+************* Module core.application.main.system_management.people.common.person_detail_vm
+src/core/application/main/system_management/people/common/person_detail_vm.py:11:4: W0107: Unnecessary pass statement (unnecessary-pass)
 ************* Module core.application.main.system_management.people.queries.get_person.handler
-src/core/application/main/system_management/people/queries/get_person/handler.py:16:21: W0613: Unused argument 'query' (unused-argument)
+src/core/application/main/system_management/people/queries/get_person/handler.py:14:21: W0613: Unused argument 'query' (unused-argument)
 ************* Module core.application.main.system_management.people.queries.get_person.view_model
-src/core/application/main/system_management/people/queries/get_person/view_model.py:17:4: W0231: __init__ method from base class 'PersonDetailVm' is not called (super-init-not-called)
-************* Module core.application.main.system_management.people.queries.search_people.handler
-src/core/application/main/system_management/people/queries/search_people/handler.py:12:0: C0411: first party import "from core.application.common.general import PagerVm" should be placed before "from .query import SearchPeopleQuery" (wrong-import-order)
+src/core/application/main/system_management/people/queries/get_person/view_model.py:13:4: W0231: __init__ method from base class 'PersonDetailVm' is not called (super-init-not-called)
 ************* Module core.application.main.system_management.people.queries.search_people.view_model
-src/core/application/main/system_management/people/queries/search_people/view_model.py:17:4: W0231: __init__ method from base class 'BasicPersonVm' is not called (super-init-not-called)
+src/core/application/main/system_management/people/queries/search_people/view_model.py:13:4: W0231: __init__ method from base class 'BasicPersonVm' is not called (super-init-not-called)
 ************* Module core.domain.main.system_management.user_account_group
 src/core/domain/main/system_management/user_account_group.py:4:0: C0305: Trailing newlines (trailing-newlines)
 ************* Module infrastructure.external_services.ExternalServicesContainer
@@ -18,13 +18,12 @@ src/infrastructure/external_services/ExternalServicesContainer.py:1:0: C0103: Mo
 ************* Module infrastructure.local_services.LocalServiceContainer
 src/infrastructure/local_services/LocalServiceContainer.py:1:0: C0103: Module name "LocalServiceContainer" doesn't conform to snake_case naming style (invalid-name)
 ************* Module infrastructure.persistence.persistence_container
-src/infrastructure/persistence/persistence_container.py:9:0: C0301: Line too long (102/100) (line-too-long)
-src/infrastructure/persistence/persistence_container.py:13:27: I1101: Module 'dependency_injector.containers' has no 'DeclarativeContainer' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-src/infrastructure/persistence/persistence_container.py:15:23: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
-src/infrastructure/persistence/persistence_container.py:19:21: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+src/infrastructure/persistence/persistence_container.py:11:27: I1101: Module 'dependency_injector.containers' has no 'DeclarativeContainer' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+src/infrastructure/persistence/persistence_container.py:13:23: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
+src/infrastructure/persistence/persistence_container.py:17:21: I1101: Module 'dependency_injector.providers' has no 'Singleton' member, but source is unavailable. Consider adding this module to extension-pkg-allow-list if you want to perform analysis based on run-time introspection of living objects. (c-extension-no-member)
 ************* Module infrastructure.persistence.postgresql.main.mapping.person
-src/infrastructure/persistence/postgresql/main/mapping/person.py:14:5: E0602: Undefined variable 'SQLAlchemy' (undefined-variable)
-src/infrastructure/persistence/postgresql/main/mapping/person.py:14:16: E0602: Undefined variable 'app' (undefined-variable)
+src/infrastructure/persistence/postgresql/main/mapping/person.py:9:5: E0602: Undefined variable 'SQLAlchemy' (undefined-variable)
+src/infrastructure/persistence/postgresql/main/mapping/person.py:9:16: E0602: Undefined variable 'app' (undefined-variable)
 ************* Module infrastructure.persistence.postgresql.main.mapping.UserAccountsMap
 src/infrastructure/persistence/postgresql/main/mapping/UserAccountsMap.py:1:0: C0103: Module name "UserAccountsMap" doesn't conform to snake_case naming style (invalid-name)
 ************* Module infrastructure.persistence.postgresql.main.services.system_management.people
@@ -34,18 +33,8 @@ src/infrastructure/persistence/postgresql/main/services/system_management/people
 src/presentation/api/common/api_response_vm.py:45:23: R1704: Redefining argument with the local name 'info_value' (redefined-argument-from-local)
 ************* Module presentation.api.routes.system_management.__init__
 src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar lines in 2 files
-==presentation.api.routes.system_management.people:[34:45]
-==presentation.custom_exceptions_handler:[29:36]
-        api_response_view_model = ApiResponseVm(application_view_model)
-
-        return Response(
-            response = api_response_view_model.json_string,
-            status = api_response_view_model.result.status_code,
-            mimetype = Constants.MIMETYPE_JSON
-        ) (duplicate-code)
-src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar lines in 2 files
-==core.application.main.system_management.people.commands.create_person.view_model:[21:26]
-==core.application.main.system_management.people.queries.get_person.view_model:[22:27]
+==core.application.main.system_management.people.commands.create_person.view_model:[19:24]
+==core.application.main.system_management.people.queries.get_person.view_model:[20:25]
         self.uid = uid
         self.name = name
         self.last_name = last_name
@@ -53,5 +42,5 @@ src/presentation/api/routes/system_management/__init__.py:1:0: R0801: Similar li
         self.modified_at = (modified_at.isoformat() if modified_at is not None else None) (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.45/10 (previous run: 9.45/10, +0.00)
+Your code has been rated at 9.51/10 (previous run: 9.51/10, +0.00)
 
