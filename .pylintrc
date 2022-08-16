@@ -42,7 +42,7 @@ fail-under=10
 #from-stdin=
 
 # Files or directories to be skipped. They should be base names, not paths.
-ignore=CVS
+ignore=CVS, migrations
 
 # Add files or directories matching the regex patterns to the ignore-list. The
 # regex matches against paths and can be in Posix or Windows format.
@@ -153,12 +153,15 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
         # ==================================================
-        import-error,
         unused-import,
         too-few-public-methods,
+        no-member,
         no-self-argument,
         no-name-in-module,
-        too-many-arguments
+        too-many-arguments,
+        duplicate-code,
+        broad-except,
+        bare-except
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
