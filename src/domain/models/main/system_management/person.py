@@ -1,8 +1,8 @@
 """
     ToDo: DocString
 """
-from domain.main.named_entity import NamedEntity
-from domain.persistence import db_connector as db
+from domain.models.main import NamedEntity
+from domain.persistence.main import db_connector as db
 
 
 class Person(NamedEntity):
