@@ -5,7 +5,6 @@
 
 import os
 from dotenv import load_dotenv
-from dependency_injector import containers, providers
 
 
 class AppSettings:

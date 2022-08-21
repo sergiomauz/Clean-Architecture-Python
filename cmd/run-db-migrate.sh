@@ -1,6 +1,12 @@
 # For more information:
 # https://flask-migrate.readthedocs.io/en/latest/
 
-read -p "Migration's name: " name
-cd src
-flask db migrate -d domain/persistence/main/migrations -m "$name"
+len=0
+while ((len<=0))
+do
+    read -p "Migration's name: " name
+    len=`expr length "$name"`
+done
+
+cd src/domain/persistence/main/flask_commands
+flask db migrate -d ../migrations -m "$name"
