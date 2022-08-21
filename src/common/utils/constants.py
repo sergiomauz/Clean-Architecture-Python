@@ -4,5 +4,6 @@
 
 class Constants:
     """ ToDo: DocString """
-    MIMETYPE_JSON = "application/json"
+    CONTENT_TYPE_JSON = "application/json"
     API_V1 = "/api/v1"
+    ERRORS_LOG_DIRECTORY = "storage/errors_log"

@@ -34,7 +34,7 @@ async def create_person():
     return Response(
         response = api_response_view_model.json_string,
         status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
+        mimetype = Constants.CONTENT_TYPE_JSON
     )
 
 @people.route("/", methods=["GET"])
@@ -47,7 +47,7 @@ async def search_people():
     return Response(
         response = api_response_view_model.json_string,
         status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
+        mimetype = Constants.CONTENT_TYPE_JSON
     )
 
 @people.route("/<uid>", methods=["GET"])
@@ -60,7 +60,7 @@ async def read_person(uid: uuid):
     return Response(
         response = api_response_view_model.json_string,
         status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
+        mimetype = Constants.CONTENT_TYPE_JSON
     )
 
 @people.route("/", methods=["PUT"])
@@ -73,7 +73,7 @@ async def update_person():
     return Response(
         response = api_response_view_model.json_string,
         status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
+        mimetype = Constants.CONTENT_TYPE_JSON
     )
 
 @people.route("/", methods=["DELETE"])
@@ -86,5 +86,5 @@ async def delete_person():
     return Response(
         response = api_response_view_model.json_string,
         status = api_response_view_model.result.status_code,
-        mimetype = Constants.MIMETYPE_JSON
+        mimetype = Constants.CONTENT_TYPE_JSON
     )

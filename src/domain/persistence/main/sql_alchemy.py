@@ -9,11 +9,9 @@ from flask_sqlalchemy import SQLAlchemy
 ROOT_DIRECTORY = str(Path(__file__).parents[3])
 sys.path.append(f"{ROOT_DIRECTORY}")
 
-print(ROOT_DIRECTORY)
-
 from settings import AppSettings
 
-db_connector = SQLAlchemy()
+sql_alchemy = SQLAlchemy()
 
 def set_connection(app: Flask) -> SQLAlchemy:
     """ ToDo: DocString """
@@ -27,7 +25,7 @@ def set_connection(app: Flask) -> SQLAlchemy:
     app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}:{port}/{database}"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
-    db_connector.app = app
-    db_connector.init_app(app)
+    sql_alchemy.app = app
+    sql_alchemy.init_app(app)
 
-    return db_connector
+    return sql_alchemy

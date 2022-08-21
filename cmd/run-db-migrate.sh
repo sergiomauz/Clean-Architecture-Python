@@ -8,5 +8,5 @@ do
     len=`expr length "$name"`
 done
 
-cd src/domain/persistence/main/flask_commands
-flask db migrate -d ../migrations -m "$name"
+cd src/domain/persistence/main/db
+flask db migrate -d migrations -m "$name"

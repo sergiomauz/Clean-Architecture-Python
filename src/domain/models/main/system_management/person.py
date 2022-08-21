@@ -2,7 +2,7 @@
     ToDo: DocString
 """
 from domain.models.main import NamedEntity
-from domain.persistence.main import db_connector as db
+from domain.persistence.main import sql_alchemy as db
 
 
 class Person(NamedEntity):
