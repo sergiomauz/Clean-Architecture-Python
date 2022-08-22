@@ -7,6 +7,7 @@ from domain.models.main.system_management import Person
 from .command import CreatePersonCommand
 from .view_model import CreatePersonVm
 
+
 @Mediator.handler
 class CreatePersonHandler:
     """ ToDo: DocString """
@@ -16,7 +17,7 @@ class CreatePersonHandler:
         person = Person(
             name = command.name,
             last_name = command.last_name)
-        # person.save()
+        person.save()
 
         create_person_vm = CreatePersonVm(
             uid = str(person.uid),

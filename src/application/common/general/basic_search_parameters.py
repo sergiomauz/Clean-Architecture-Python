@@ -3,10 +3,7 @@
 """
 
 from typing import Any
-from pydantic import validator
-
-from common.validators import (
-    DeferredValidator)
+from common.validators import DeferredValidator
 
 
 class BasicSearchParameters(DeferredValidator):

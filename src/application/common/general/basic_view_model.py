@@ -2,9 +2,11 @@
     ToDo: DocString
 """
 from dataclasses import dataclass
-from .basic_person_vm import BasicPersonVm
 
 
 @dataclass
-class PersonDetailVm(BasicPersonVm):
+class BasicViewModel:
     """ ToDo: DocString """
+    uid: str
+    created_at: str
+    modified_at: str

@@ -1,7 +1,6 @@
 """
     ToDo: DocString
 """
-import json
 from typing import Any
 from pydantic import validator
 from common.validators import DeferredValidator
@@ -16,9 +15,9 @@ class CreatePersonCommand(DeferredValidator):
     @classmethod
     def new(cls, request: Any):
         """ ToDo: DocString """
-        body = json.loads(request.body.decode("utf-8"))
-        name = body.get("name")
-        last_name = body.get("last_name")
+        body = request.json
+        name = body["name"]
+        last_name = body["last_name"]
         new_instance = cls.create_instance(name = name, last_name = last_name)
 
         return new_instance.validate()

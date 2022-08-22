@@ -1,8 +1,8 @@
 """First migration
 
-Revision ID: 2978b183bc5f
+Revision ID: 6279acbfa80a
 Revises: 
-Create Date: 2022-08-21 15:04:15.807076
+Create Date: 2022-08-21 17:17:57.596667
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '2978b183bc5f'
+revision = '6279acbfa80a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,8 +23,8 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('modified_at', sa.DateTime(), nullable=True),
     sa.Column('status_code', sa.Integer(), nullable=True),
-    sa.Column('description', sa.String(length=1500), nullable=True),
-    sa.Column('stack_trace', sa.String(length=6150), nullable=True),
+    sa.Column('description', sa.String(length=15000), nullable=True),
+    sa.Column('stack_trace', sa.String(length=61500), nullable=True),
     sa.PrimaryKeyConstraint('uid')
     )
     op.create_table('person',

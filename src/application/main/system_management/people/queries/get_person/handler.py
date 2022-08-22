@@ -1,11 +1,12 @@
 """
     ToDo: DocString
 """
-
-from datetime import datetime
 from mediatr import Mediator
+from common.utils import Messages, str_yyyymmdd_t
+from domain.models.main.system_management import Person
 from .query import GetPersonQuery
 from .view_model import GetPersonVm
+
 
 @Mediator.handler
 class GetPersonHandler:
@@ -13,12 +14,18 @@ class GetPersonHandler:
 
     def handle(self, query: GetPersonQuery) -> GetPersonVm:
         """ ToDo: DocString """
+        person = Person.get_by_uid(str_uid = query.uid)
+        print(person.uid)
+        if not person:
+            print(Messages.ID_NOT_FOUND)
+            # raise Messages.ID_NOT_FOUND
 
         get_person_vm = GetPersonVm(
-            "cb4c3fb3-5580-42aa-ab3f-a63941374e4f",
-            "Sergio Mauricio",
-            "Zambrano Jove",
-            datetime.utcnow(),
-            datetime.utcnow())
+            uid = str(person.uid),
+            name = person.name,
+            last_name = person.last_name,
+            created_at = str_yyyymmdd_t(person.created_at),
+            modified_at = str_yyyymmdd_t(person.modified_at))
 
         return get_person_vm
+

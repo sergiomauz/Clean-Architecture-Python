@@ -1,11 +1,12 @@
 """
     ToDo: DocString
 """
-
 import math
 from typing import Generic, List, TypeVar
 
+
 T = TypeVar("T")
+
 
 class PagerVm(Generic[T]):
     """ ToDo: DocString """

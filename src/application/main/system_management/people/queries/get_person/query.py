@@ -1,23 +1,17 @@
 """
     ToDo: DocString
 """
-
-import uuid
 from pydantic import validator
-
-from common.validators import (
-    DeferredValidator)
+from common.validators import DeferredValidator
 
 
 class GetPersonQuery(DeferredValidator):
     """ ToDo: DocString """
-    uid: uuid.UUID
+    uid:str
 
     @classmethod
-    def new(cls, requested_uid: uuid):
+    def new(cls, requested_uid: str):
         """ ToDo: DocString """
-        uid = requested_uid
-
-        new_instance = cls.create_instance(uid = uid)
+        new_instance = cls.create_instance(uid = requested_uid)
 
         return new_instance.validate()
