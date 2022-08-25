@@ -43,9 +43,7 @@ class CreateErrorLogHandler:
 
         if error_log.status_code != 400:
             try:
-                db.session.add(error_log)
-                db.session.commit()
-                # error_log.save()
+                error_log.save()
             except:
                 self.__save_error_in_file(command = command)
 

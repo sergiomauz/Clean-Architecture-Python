@@ -1,11 +1,19 @@
 """
     ToDo: DocString
 """
+from typing import List
+from dataclasses import dataclass
 
-from typing import Any
+
+@dataclass
+class ErrorMessage:
+    """ ToDo: DocString """
+    row: int = 0
+    error_in: str = ""
+    description: str = ""
 
 
+@dataclass
 class ApiMessagesVm:
     """ ToDo: DocString """
-    def __init__(self, messages : Any = ""):
-        self.messages = messages
+    messages: List[ErrorMessage] = None

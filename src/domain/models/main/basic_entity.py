@@ -4,9 +4,10 @@
 import uuid
 import datetime
 from typing import List
+import sqlalchemy as sa
 from sqlalchemy.dialects.postgresql import UUID as pg_uuid
-from domain.persistence.main import sql_alchemy as db
 from common.utils import convert_to_uuid
+from domain.persistence.main import sql_alchemy as db
 from application.common.general import BasicSearchParameters
 
 
@@ -33,25 +34,31 @@ class BasicEntity(db.Model):
     @classmethod
     def get_list_by_uids(cls, uids_list: List[str]):
         """ ToDo: DocString """
-        return cls.objects.filter(uid__in = uids_list)
+        return cls.query.filter(cls.uid.in_(uids_list)).all()
 
     @classmethod
     def filter(cls, basic_search_parameters: BasicSearchParameters):
         """ ToDo: DocString """
-        page_size = basic_search_parameters.page_size
-        offset = (basic_search_parameters.current_page - 1) * basic_search_parameters.page_size
+        query = cls.query.filter(
+            sa.cast(cls.uid, sa.String).like(f"%{basic_search_parameters.filter_value}%")
+            ).order_by(
+                cls.created_at.desc(), cls.modified_at.desc()
+            ).paginate(basic_search_parameters.current_page, basic_search_parameters.page_size)
 
-        return cls.objects.filter(uid__icontains =
-                                    basic_search_parameters.filter_value
-                                    ).order_by(
-                                        "-created_at", "-modified_at"
-                                    )[offset : offset + page_size]
+        return query.items
+
+    @classmethod
+    def delete_list_by_uids(cls, uids_list: List[str]):
+        """ ToDo: DocString """
+        cls.query.filter(cls.uid.in_(uids_list)).delete()
+        db.session.commit()
 
     @classmethod
     def total_count(cls, basic_search_parameters: BasicSearchParameters):
         """ ToDo: DocString """
-        return cls.objects.filter(uid__icontains =
-                                    basic_search_parameters.filter_value).count()
+        return cls.query.filter(
+            sa.cast(cls.uid, sa.String).like(f"%{basic_search_parameters.filter_value}%")
+            ).count()
 
     def save(self):
         """ ToDo: DocString """

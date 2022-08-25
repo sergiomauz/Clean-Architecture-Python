@@ -9,15 +9,15 @@ from common.utils import Messages
 
 class CreatePersonCommand(DeferredValidator):
     """ ToDo: DocString """
-    name: str
-    last_name: str
+    name: str = None
+    last_name: str = None
 
     @classmethod
     def new(cls, request: Any):
         """ ToDo: DocString """
         body = request.json
-        name = body["name"]
-        last_name = body["last_name"]
+        name = body.get("name")
+        last_name = body.get("last_name")
         new_instance = cls.create_instance(name = name, last_name = last_name)
 
         return new_instance.validate()
