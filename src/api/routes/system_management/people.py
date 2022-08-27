@@ -27,6 +27,9 @@ mediator = Mediator()
 @people.route("/", methods=["POST"])
 async def create_person():
     """ ToDo: DocString """
+    print("======================================")
+    print(request)
+    print("======================================")                
     command = CreatePersonCommand.new(request)
     application_view_model = await mediator.send_async(command)
     api_response_view_model = ApiResponseVm(application_view_model)

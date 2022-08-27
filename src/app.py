@@ -2,7 +2,6 @@
     ToDo: DocString
 """
 from flask import Flask
-from flask_migrate import Migrate
 from domain.persistence.main import set_connection, sql_alchemy
 from api.routes import RoutesHandler
 from api.exceptions import CustomExceptionsHandler
