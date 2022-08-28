@@ -2,7 +2,7 @@
     ToDo: DocString
 """
 import sqlalchemy as sa
-from domain.models.main import NamedEntity
+from domain.models.main.base import NamedEntity
 from domain.persistence.main import sql_alchemy as db
 from application.common.general import BasicSearchParameters
 

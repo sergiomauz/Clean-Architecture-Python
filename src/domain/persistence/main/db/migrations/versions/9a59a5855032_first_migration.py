@@ -1,8 +1,8 @@
-"""First migration
+"""First_migration
 
-Revision ID: 6279acbfa80a
+Revision ID: 9a59a5855032
 Revises: 
-Create Date: 2022-08-21 17:17:57.596667
+Create Date: 2022-08-28 14:14:24.610283
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision = '6279acbfa80a'
+revision = '9a59a5855032'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,7 @@ def upgrade():
     sa.Column('uid', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('modified_at', sa.DateTime(), nullable=True),
+    sa.Column('disabled_at', sa.DateTime(), nullable=True),
     sa.Column('status_code', sa.Integer(), nullable=True),
     sa.Column('description', sa.String(length=15000), nullable=True),
     sa.Column('stack_trace', sa.String(length=61500), nullable=True),
@@ -31,6 +32,7 @@ def upgrade():
     sa.Column('uid', postgresql.UUID(as_uuid=True), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('modified_at', sa.DateTime(), nullable=True),
+    sa.Column('disabled_at', sa.DateTime(), nullable=True),
     sa.Column('name', sa.String(length=100), nullable=True),
     sa.Column('last_name', sa.String(length=100), nullable=True),
     sa.PrimaryKeyConstraint('uid')

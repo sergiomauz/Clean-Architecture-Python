@@ -1,7 +1,7 @@
 """
     ToDo: DocString
 """
-from domain.models.main import BasicEntity
+from domain.models.main.base import BasicEntity
 from domain.persistence.main import sql_alchemy as db
 
 

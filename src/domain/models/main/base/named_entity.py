@@ -2,11 +2,9 @@
     ToDo: DocString
 """
 import sqlalchemy as sa
-from sqlalchemy.dialects.postgresql import UUID as pg_uuid
-from common.utils import convert_to_uuid
 from domain.persistence.main import sql_alchemy as db
 from application.common.general import BasicSearchParameters
-from .basic_entity import BasicEntity
+from .basic_entity_id_uuid import BasicEntity
 
 
 class NamedEntity(BasicEntity):

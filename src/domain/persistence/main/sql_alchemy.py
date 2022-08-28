@@ -16,13 +16,14 @@ sql_alchemy = SQLAlchemy()
 def set_connection(app: Flask) -> SQLAlchemy:
     """ ToDo: DocString """
     settings = AppSettings()
-    host = settings.get("POSTGRESQL.HOST")
-    port = settings.get("POSTGRESQL.PORT")
-    user = settings.get("POSTGRESQL.USER")
-    password = settings.get("POSTGRESQL.PASSWORD")
-    database = settings.get("POSTGRESQL.DATABASE")
+    engine = settings.get("MAIN.DATABASE.ENGINE")
+    host = settings.get("MAIN.DATABASE.HOST")
+    port = settings.get("MAIN.DATABASE.PORT")
+    user = settings.get("MAIN.DATABASE.USER")
+    password = settings.get("MAIN.DATABASE.PASSWORD")
+    database = settings.get("MAIN.DATABASE.NAME")
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{user}:{password}@{host}:{port}/{database}"
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"{engine}://{user}:{password}@{host}:{port}/{database}"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 
     sql_alchemy.app = app

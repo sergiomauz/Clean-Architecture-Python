@@ -2,7 +2,6 @@
     ToDo: DocString
 """
 
-
 import uuid
 from mediatr import Mediator
 from flask import Blueprint, Response, request
@@ -17,7 +16,7 @@ from application.main.system_management.people.commands.update_person import (
     UpdatePersonCommand, UpdatePersonVm, UpdatePersonHandler)
 from application.main.system_management.people.commands.delete_person import (
     DeletePersonCommand, DeletePersonVm, DeletePersonHandler)
-from api.common import ApiResponseVm
+from presentation.common import ApiResponseVm
 
 
 people = Blueprint("people", __name__)
@@ -27,9 +26,6 @@ mediator = Mediator()
 @people.route("/", methods=["POST"])
 async def create_person():
     """ ToDo: DocString """
-    print("======================================")
-    print(request)
-    print("======================================")                
     command = CreatePersonCommand.new(request)
     application_view_model = await mediator.send_async(command)
     api_response_view_model = ApiResponseVm(application_view_model)

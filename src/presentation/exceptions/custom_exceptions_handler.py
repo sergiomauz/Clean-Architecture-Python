@@ -4,7 +4,7 @@
 from mediatr import Mediator
 from flask import Response
 from common.utils import Constants
-from api.common import ApiResponseVm
+from presentation.common import ApiResponseVm
 from application.main.system_management.errors_log.commands.create_error_log import (
     CreateErrorLogCommand, CreateErrorLogVm, CreateErrorLogHandler)
 

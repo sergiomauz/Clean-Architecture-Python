@@ -4,7 +4,7 @@
 
 
 from common.utils import Constants
-from api.routes.system_management import (
+from presentation.routes.system_management import (
     people)
 
 

@@ -3,8 +3,8 @@
 """
 from flask import Flask
 from domain.persistence.main import set_connection, sql_alchemy
-from api.routes import RoutesHandler
-from api.exceptions import CustomExceptionsHandler
+from presentation.routes import RoutesHandler
+from presentation.exceptions import CustomExceptionsHandler
 
 
 app = Flask(__name__)

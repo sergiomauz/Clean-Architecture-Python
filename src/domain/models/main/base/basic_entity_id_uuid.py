@@ -5,7 +5,7 @@ import uuid
 import datetime
 from typing import List
 import sqlalchemy as sa
-from sqlalchemy.dialects.postgresql import UUID as pg_uuid
+from sqlalchemy.dialects.postgresql import UUID as db_uuid
 from common.utils import convert_to_uuid
 from domain.persistence.main import sql_alchemy as db
 from application.common.general import BasicSearchParameters
@@ -14,9 +14,10 @@ from application.common.general import BasicSearchParameters
 class BasicEntity(db.Model):
     """ ToDo: DocString """
     __abstract__ = True
-    uid = db.Column(pg_uuid(as_uuid = True), primary_key = True, default = uuid.uuid1())
+    uid = db.Column(db_uuid(as_uuid = True), primary_key = True, default = uuid.uuid1())
     created_at = db.Column(db.DateTime, nullable = False)
     modified_at = db.Column(db.DateTime, nullable = True)
+    disabled_at = db.Column(db.DateTime, nullable = True)
 
     @classmethod
     def get_by_uid(cls, str_uid: str):
